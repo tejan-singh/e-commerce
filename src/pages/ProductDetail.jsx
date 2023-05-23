@@ -18,6 +18,7 @@ const ProductDetail = () => {
       <p>{product.title}</p>
       <p>{product.author}</p>
       <p>{product.price}</p>
+      <p>{product.rating}</p>
       <p>{product.categoryName}</p>
       <button>Add to cart</button>
     </div>
