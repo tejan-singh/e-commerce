@@ -8,26 +8,29 @@ import { v4 as uuid } from "uuid";
 export const products = [
   {
     _id: uuid(),
-    title: "You Can WIN",
-    author: "Shiv Khera",
+    title: "Black tshirt",
+    image: "https://postimg.cc/yWJFpYLB",
+    brand: "levis",
     price: "5000",
-    categoryName: "non-fiction",
+    categoryName: "men",
     rating:4
   },
   {
     _id: uuid(),
-    title: "You are Winner",
-    author: "Junaid Qureshi",
+    title: "Pink tshirt",
+    image: "https://postimg.cc/yWJFpYLB",
+    brand: "h&m",
     price: "3000",
-    categoryName: "horror",
+    categoryName: "women",
     rating:5
   },
   {
     _id: uuid(),
-    title: "Think and Grow Rich",
-    author: "Shiv Khera",
+    title: "White shirt",
+    image: "https://postimg.cc/yWJFpYLB",
+    brand: "arrow",
     price: "1000",
-    categoryName: "fiction",
+    categoryName: "men",
     rating:3
   },
 ];

@@ -1,13 +1,17 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
+import { FilterContext } from "./FilterContext";
 
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
+  // const {filterState:filteredProducts} = useContext(FilterContext)
+
   const initialState = {
     allProducts: [],
     errorMsg: "",
     loading: true,
-    product: {}
+    product: {},
+    filteredProducts:{}
   };
 
   const reducerFun = (state, action) => {

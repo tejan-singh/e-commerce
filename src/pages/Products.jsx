@@ -3,6 +3,7 @@ import { AppContext } from "../context/AppContext";
 import Loading from "../components/Loading";
 import Error from "./Error";
 import { Link, useParams } from "react-router-dom";
+import Filters from "../components/Filters";
 
 const Products = () => {
   const {
@@ -19,18 +20,20 @@ const Products = () => {
 
   return (
     <>
-      {filteredProducts.map(
-        ({ title, author, price, categoryName, id, _id }) => (
-          <article style={{ border: "1px solid" }} key={id}>
-            <Link onClick={() => showProduct(_id)} to={`/product/${_id}`}>
-              {title}
-            </Link>
-            <p>{author}</p>
-            <p>{price}</p>
-            <button>Add to cart</button>
-          </article>
-        )
-      )}
+      <Filters />
+      {filteredProducts.map(({ title, author, price, image, id, _id }) => (
+        <article style={{ border: "1px solid" }} key={id}>
+          <Link onClick={() => showProduct(_id)} to={`/product/${_id}`}>
+            {title}
+          </Link>
+          <figure>
+            <img src={image} alt="" />
+          </figure>
+          <p>{author}</p>
+          <p>{price}</p>
+          <button>Add to cart</button>
+        </article>
+      ))}
     </>
   );
 };
