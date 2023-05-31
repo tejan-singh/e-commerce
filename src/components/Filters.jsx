@@ -1,37 +1,47 @@
 import React, { useContext } from "react";
-import { FilterContext } from "../context/FilterContext";
+import { AppContext } from "../context/AppContext";
 
 const Filters = () => {
-  const {filterState, dispatch} = useContext(FilterContext)
+  const {
+    appState: { allRatings, allCategories },
+    dispatch,
+  } = useContext(AppContext);
 
   const handleCategory = (e) => {
-    dispatch({type: 'CATEGORY', payload: e.target.value})
+    dispatch({ type: "CATEGORY", payload: e.target.value });
+  };
 
-  }
+  const handleRating = (e) => {
+    dispatch({ type: "RATING", payload: e.target.value });
+  };
+
+  const handlePrice = (e) => {
+    console.log(e.target.value)
+    dispatch({ type: "PRICE", payload: parseInt(e.target.value) });
+  };
 
   return (
     <div>
       <p>Filters</p>
       <div>
         <label htmlFor="price">Price</label>
-        <input type="range" name="price" min={1} max={1000} step={1} />
+        <input onChange={handlePrice} type="range" name="price" min={0} max={10000} step={250} />
       </div>
 
       <div>
-      <select onChange={handleCategory} name="category">
         <p>Category</p>
-        <option value="men">Men</option>
-        <option value="women">Women</option>
-      </select>
+        <select onChange={handleCategory} name="category">
+          {allCategories.map( (category)=>  <option value={category}>{category}</option>)}
+        </select>
       </div>
 
       <div>
-      <select name="rating">
-        <p>Rating</p>
-        <option value="3">3 Star</option>
-        <option value="4">4 Star</option>
-        <option value="5">5 Star</option>
-      </select>
+        <select name="rating" onChange={handleRating} >
+          <p>Rating</p>
+          {allRatings.map((rating) => (
+            <option value={rating}>{rating} star and above</option>
+          ))}
+        </select>
       </div>
     </div>
   );

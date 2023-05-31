@@ -9,7 +9,7 @@ export const products = [
   {
     _id: uuid(),
     title: "Black tshirt",
-    image: "https://postimg.cc/yWJFpYLB",
+    image: "https://i.postimg.cc/Df6BZSsW/MS1925-A-2.jpg",
     brand: "levis",
     price: "5000",
     categoryName: "men",
@@ -18,7 +18,7 @@ export const products = [
   {
     _id: uuid(),
     title: "Pink tshirt",
-    image: "https://postimg.cc/yWJFpYLB",
+    image: "https://i.postimg.cc/Df6BZSsW/MS1925-A-2.jpg",
     brand: "h&m",
     price: "3000",
     categoryName: "women",
@@ -27,7 +27,7 @@ export const products = [
   {
     _id: uuid(),
     title: "White shirt",
-    image: "https://postimg.cc/yWJFpYLB",
+    image: "https://i.postimg.cc/Df6BZSsW/MS1925-A-2.jpg",
     brand: "arrow",
     price: "1000",
     categoryName: "men",

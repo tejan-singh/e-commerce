@@ -4,7 +4,8 @@ import "./App.css";
 import Products from './pages/Products';
 import Error404 from './pages/Error404';
 import Home from './pages/Home';
-import ProductDetail from './pages/ProductDetail';
+import Product from './pages/Product';
+import Wishlist from './pages/Wishlist';
 
 function App() {
   return (
@@ -12,9 +13,10 @@ function App() {
       <Routes>
         <Route path="/mockman" element={<Mockman/>}/>
         <Route path="/products" element={<Products/>}/>
+        <Route path="/wishlist" element={<Wishlist/>}/>
         <Route path="*" element={<Error404/>}/>
         <Route path="/" element={<Home/>}/>
-        <Route path='/product/:productId' element={<ProductDetail/>}/>
+        <Route path='/product/:productId' element={<Product/>}/>
       </Routes>
     </div>
   );
