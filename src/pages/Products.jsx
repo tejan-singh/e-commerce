@@ -19,10 +19,9 @@ const Products = () => {
     dispatch({ type: "WISHLIST", payload: _id });
   };
 
-  const removeWishlist = (_id) => {
-    console.log("click")
-    dispatch({ type: "REMOVE_FROM_WISHLIST", payload: _id });
-  };
+  const handleAddToCart = (_id) => {
+    dispatch({ type: "ADD_TO_CART", payload: _id });
+  }
 
   if (loading) return <Loading />;
   if (errorMsg) return <Error />;
@@ -31,12 +30,14 @@ const Products = () => {
     <>
       <Filters />
       {filteredProducts.map((product) => (
-        <ProductDetails
-          {...product}
-          handleWishlist={handleWishlist}
-          showProduct={showProduct}
-          removeWishlist={removeWishlist}
-        />
+        
+        <ProductDetails 
+        {...product}
+        showProduct={showProduct}
+        handleWishlist={handleWishlist}
+        handleAddToCart={handleAddToCart}
+         />
+        
       ))}
     </>
   );

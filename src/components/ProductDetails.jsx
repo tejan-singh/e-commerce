@@ -8,25 +8,42 @@ const ProductDetails = ({
   image,
   id,
   _id,
+  isAddToCart,
+  inCart,
+  inWishlist,
   showProduct,
   handleWishlist,
-  inWishlist,
   removeWishlist,
   wishlistItem,
+  handleAddToCart,
+  removeCartItem,
 }) => {
   return (
-    <article style={{ border: "1px solid" }} key={id}>
+    <article style={{ border: "1px solid", width: "300px" }} key={id}>
       <Link onClick={() => showProduct(_id)} to={`/product/${_id}`}>
         {title}
       </Link>
-      <figure>
-        <img src={image} alt="" />
-      </figure>
+      <img style={{ width: "100%" }} src={image} alt="" />
       <p>{author}</p>
       <p>{price}</p>
-      <button>Add to cart</button>
+
+      {isAddToCart ? (
+        <button onClick={() => removeCartItem(_id)}>Remove from Cart</button>
+      ) : (
+        <>
+          {inCart && (
+            <button>
+              <Link to={"/cart"}>Go to Cart</Link>
+            </button>
+          )}
+          {!inCart && (
+            <button onClick={() => handleAddToCart(_id)}>Add to Cart</button>
+          )}
+        </>
+      )}
+
       {wishlistItem ? (
-        <button onClick={console.log("click")}>
+        <button onClick={() => removeWishlist(_id)}>
           Remove from wishlist
         </button>
       ) : (
@@ -37,7 +54,7 @@ const ProductDetails = ({
             </button>
           )}
           {!inWishlist && (
-            <button onClick={handleWishlist(_id)}>Add to wishlist</button>
+            <button onClick={() => handleWishlist(_id)}>Add to wishlist</button>
           )}
         </>
       )}

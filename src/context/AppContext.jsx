@@ -15,6 +15,7 @@ export const AppProvider = ({ children }) => {
     rating: "",
     price: 0,
     wishlist: [],
+    cartItems: [],
   };
 
   const reducerFun = (state, action) => {
@@ -74,40 +75,101 @@ export const AppProvider = ({ children }) => {
         };
 
       case "WISHLIST":
-        const product = {
-          ...state.allProducts.find(
-            (product) => product._id === action.payload
-          ),
-          inWishlist: true,
-        };
-        const updatedProducts = state.allProducts.map((product) =>
+        const updatedFilteredProducts = state.filteredProducts.map((product) =>
+          product._id === action.payload
+            ? { ...product, inWishlist: true }
+            : product
+        );
+
+        const updatedAllProducts = state.allProducts.map((product) =>
           product._id === action.payload
             ? { ...product, inWishlist: true }
             : product
         );
         return {
           ...state,
-          wishlist: [...state.wishlist, product],
-          allProducts: updatedProducts,
-          filteredProducts: updatedProducts,
+          allProducts: updatedAllProducts,
+          filteredProducts: updatedFilteredProducts,
         };
 
-        case "REMOVE_FROM_WISHLIST":
-          // const product = {
-          //   ...state.allProducts.find(
-          //     (product) => product._id === action.payload
-          //   ),
-          //   inWishlist: true,
-          // };
-          const updatedListItems = state.allProducts.filter((product) =>
-            product._id !== action.payload
-          );
-          return {
-            ...state,
-            wishlist: [...state.wishlist, product],
-            allProducts: updatedListItems,
-            filteredProducts: updatedListItems,
-          };
+      case "REMOVE_FROM_WISHLIST":
+        const updatedFilteredProductsList = state.filteredProducts.map(
+          (product) =>
+            product._id === action.payload
+              ? { ...product, inWishlist: false }
+              : product
+        );
+
+        const updatedAllProductsList = state.allProducts.map((product) =>
+          product._id === action.payload
+            ? { ...product, inWishlist: false }
+            : product
+        );
+
+        return {
+          ...state,
+          filteredProducts: updatedFilteredProductsList,
+          allProducts: updatedAllProductsList,
+        };
+
+      case "ADD_TO_CART":
+        const updatedFilteredProductsCart = state.filteredProducts.map(
+          (product) =>
+            product._id === action.payload
+              ? { ...product, inCart: true }
+              : product
+        );
+
+        const updatedAllProductsCart = state.allProducts.map((product) =>
+          product._id === action.payload
+            ? { ...product, inCart: true }
+            : product
+        );
+        return {
+          ...state,
+          allProducts: updatedAllProductsCart,
+          filteredProducts: updatedFilteredProductsCart,
+        };
+
+      case "REMOVE_FROM_CART":
+        const updatedFilteredProductsListCart = state.filteredProducts.map(
+          (product) =>
+            product._id === action.payload
+              ? { ...product, inCart: false }
+              : product
+        );
+
+        const updatedAllProductsListCart = state.allProducts.map((product) =>
+          product._id === action.payload
+            ? { ...product, inCart: false }
+            : product
+        );
+
+        return {
+          ...state,
+          filteredProducts: updatedFilteredProductsListCart,
+          allProducts: updatedAllProductsListCart,
+        };
+      // case "SET_CART_ITEMS":
+      //   return {
+      //     ...state,
+      //     cartItems: action.payload,
+      //   };
+      // case "SET_WISHLIST_ITEMS":
+      //   return {
+      //     ...state,
+      //     wishlist: action.payload,
+      //   };
+      case "SHOW_CART_ITEMS":
+        return {
+          ...state,
+          cartItems: state.allProducts.filter(({ inCart }) => inCart),
+        };
+      case 'SHOW_WISHLIST_ITEMS':
+        return {
+          ...state,
+          wishlist: state.allProducts.filter(({ inWishlist }) => inWishlist),
+        }  
       default:
         return state;
     }
@@ -160,9 +222,21 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  const getCartItems = () => {
+    dispatch({ type: "SHOW_CART_ITEMS" });
+  };
+  
+  const getWishlistItems = () => {
+    dispatch({type: 'SHOW_WISHLIST_ITEMS'})
+  }
   useEffect(() => {
     getProducts();
   }, []);
+
+  useEffect(() => {
+    getCartItems();
+    getWishlistItems();
+  }, [appState.allProducts]);
 
   return (
     <AppContext.Provider value={{ appState, dispatch }}>
