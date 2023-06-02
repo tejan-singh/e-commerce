@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import styles from './ProductDetails.module.css'
 const ProductDetails = ({
   title,
   author,
@@ -19,11 +19,11 @@ const ProductDetails = ({
   removeCartItem,
 }) => {
   return (
-    <article style={{ border: "1px solid", width: "300px" }} key={id}>
+    <article className={styles['product-desc']} key={id}>
       <Link onClick={() => showProduct(_id)} to={`/product/${_id}`}>
         {title}
       </Link>
-      <img style={{ width: "100%" }} src={image} alt="" />
+      <img src={image} alt="" />
       <p>{author}</p>
       <p>{price}</p>
 
