@@ -18,7 +18,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<Error404 />} />
         <Route path="/" element={<Home />} />
-        <Route path="/product/:productId" element={<Product />} />
+        <Route path="/products/:productId" element={<Product />} />
       </Routes>
     </div>
   );

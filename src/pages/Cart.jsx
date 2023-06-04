@@ -14,7 +14,6 @@ const Cart = () => {
 
   const handleWishlist = (_id) => {
     dispatch({ type: "WISHLIST", payload: _id });
-
   };
 
   const removeWishlist = (_id) => {
@@ -23,7 +22,7 @@ const Cart = () => {
 
   return (
     <div>
-      Cart
+      <h1>Cart</h1>
       {cartItems.map((product) => (
         <ProductDetails
           isAddToCart

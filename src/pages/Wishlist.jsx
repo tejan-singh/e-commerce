@@ -14,16 +14,6 @@ const Wishlist = () => {
 
   const handleAddToCart = (_id) => {
     dispatch({ type: "ADD_TO_CART", payload: _id });
-
-    const updatedCartItems = wishlist.map( item => {
-      if(item._id === _id){
-        return {...item, inCart: true}
-      }else{
-        return item;
-      }
-    })
-
-    dispatch({type:'SET_WISHLIST_ITEMS', payload: updatedCartItems})
   }
 
   return (

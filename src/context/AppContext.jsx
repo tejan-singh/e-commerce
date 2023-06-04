@@ -49,9 +49,7 @@ export const AppProvider = ({ children }) => {
       case "SHOW_PRODUCT":
         return {
           ...state,
-          product: state.allProducts.find(
-            (product) => product._id === action.payload
-          ),
+          product: action.payload
         };
 
       case "CATEGORY":
@@ -73,7 +71,13 @@ export const AppProvider = ({ children }) => {
           price: action.payload,
           filteredProducts: applyFilter({ ...state, price: action.payload }),
         };
-
+      case 'CLEAR_FILTERS':
+        return{
+          ...state,
+          category:"",
+          rating:'',
+          filteredProducts: state.allProducts
+        }
       case "WISHLIST":
         const updatedFilteredProducts = state.filteredProducts.map((product) =>
           product._id === action.payload
@@ -150,16 +154,6 @@ export const AppProvider = ({ children }) => {
           filteredProducts: updatedFilteredProductsListCart,
           allProducts: updatedAllProductsListCart,
         };
-      // case "SET_CART_ITEMS":
-      //   return {
-      //     ...state,
-      //     cartItems: action.payload,
-      //   };
-      // case "SET_WISHLIST_ITEMS":
-      //   return {
-      //     ...state,
-      //     wishlist: action.payload,
-      //   };
       case "SHOW_CART_ITEMS":
         return {
           ...state,
@@ -205,7 +199,7 @@ export const AppProvider = ({ children }) => {
 
   const getProducts = async () => {
     try {
-      const result = await fetch("api/products");
+      const result = await fetch("/api/products");
       const { products } = await result.json();
       const allCategories = products.reduce(
         (sum, { categoryName }) =>

@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 
 export const products = [
   {
-    _id: uuid(),
+    _id: 1,
     title: "Black tshirt",
     image: "https://i.postimg.cc/Df6BZSsW/MS1925-A-2.jpg",
     brand: "levis",
@@ -16,7 +16,7 @@ export const products = [
     rating:5
   },
   {
-    _id: uuid(),
+    _id: 2,
     title: "Pink tshirt",
     image: "https://i.postimg.cc/Gmgg9zDX/LS3712-B-2.jpg",
     brand: "h&m",
@@ -25,7 +25,7 @@ export const products = [
     rating:4
   },
   {
-    _id: uuid(),
+    _id: 3,
     title: "White shirt",
     image: "https://i.postimg.cc/v8vzc3F5/MS3773-A-1.jpg",
     brand: "arrow",
@@ -35,7 +35,7 @@ export const products = [
   },
   
   {
-    _id: uuid(),
+    _id: 4,
     title: "White shirt",
     image: "https://i.postimg.cc/Df6BZSsW/MS1925-A-2.jpg",
     brand: "arrow",
@@ -44,7 +44,7 @@ export const products = [
     rating:2
   },
   {
-    _id: uuid(),
+    _id: 5,
     title: "White shirt",
     image: "https://i.postimg.cc/Df6BZSsW/MS1925-A-2.jpg",
     brand: "arrow",
@@ -53,7 +53,7 @@ export const products = [
     rating:1
   },
   {
-    _id: uuid(),
+    _id: 6,
     title: "Pink tshirt",
     image: "https://i.postimg.cc/Df6BZSsW/MS1925-A-2.jpg",
     brand: "h&m",

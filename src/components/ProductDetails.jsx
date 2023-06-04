@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styles from './ProductDetails.module.css'
 const ProductDetails = ({
   title,
@@ -17,12 +17,14 @@ const ProductDetails = ({
   wishlistItem,
   handleAddToCart,
   removeCartItem,
+  isProduct
 }) => {
+
   return (
     <article className={styles['product-desc']} key={id}>
-      <Link onClick={() => showProduct(_id)} to={`/product/${_id}`}>
+      {!isProduct && <Link to={`/products/${_id}`}>
         {title}
-      </Link>
+      </Link>}
       <img src={image} alt="" />
       <p>{author}</p>
       <p>{price}</p>
