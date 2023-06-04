@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import ProductDetails from "../components/ProductDetails";
+import Checkout from "./Checkout";
 
 const Cart = () => {
   const {
@@ -21,18 +22,25 @@ const Cart = () => {
   };
 
   return (
-    <div>
-      <h1>Cart</h1>
-      {cartItems.map((product) => (
-        <ProductDetails
-          isAddToCart
-          {...product}
-          removeCartItem={removeCartItem}
-          handleWishlist={handleWishlist}
-          removeWishlist={removeWishlist}
-        />
-      ))}
-    </div>
+    <>
+      <section>
+        <h1>Cart</h1>
+        {cartItems.length > 0 ? (
+          cartItems.map((product) => (
+            <ProductDetails
+              isAddToCart
+              {...product}
+              removeCartItem={removeCartItem}
+              handleWishlist={handleWishlist}
+              removeWishlist={removeWishlist}
+            />
+          ))
+        ) : (
+          <p>Your cart is empty</p>
+        )}
+      </section>
+      <section>{cartItems.length > 0 && <Checkout />}</section>
+    </>
   );
 };
 

@@ -11,7 +11,7 @@ export const products = [
     title: "Black tshirt",
     image: "https://i.postimg.cc/Df6BZSsW/MS1925-A-2.jpg",
     brand: "levis",
-    price: "5000",
+    price: 5000,
     categoryName: "men",
     rating:5
   },
@@ -20,7 +20,7 @@ export const products = [
     title: "Pink tshirt",
     image: "https://i.postimg.cc/Gmgg9zDX/LS3712-B-2.jpg",
     brand: "h&m",
-    price: "4000",
+    price: 4000,
     categoryName: "women",
     rating:4
   },
@@ -29,7 +29,7 @@ export const products = [
     title: "White shirt",
     image: "https://i.postimg.cc/v8vzc3F5/MS3773-A-1.jpg",
     brand: "arrow",
-    price: "3000",
+    price: 3000,
     categoryName: "men",
     rating:3
   },
@@ -39,7 +39,7 @@ export const products = [
     title: "White shirt",
     image: "https://i.postimg.cc/Df6BZSsW/MS1925-A-2.jpg",
     brand: "arrow",
-    price: "2000",
+    price: 2000,
     categoryName: "men",
     rating:2
   },
@@ -48,7 +48,7 @@ export const products = [
     title: "White shirt",
     image: "https://i.postimg.cc/Df6BZSsW/MS1925-A-2.jpg",
     brand: "arrow",
-    price: "1000",
+    price: 1000,
     categoryName: "men",
     rating:1
   },
@@ -57,7 +57,7 @@ export const products = [
     title: "Pink tshirt",
     image: "https://i.postimg.cc/Df6BZSsW/MS1925-A-2.jpg",
     brand: "h&m",
-    price: "4000",
+    price: 4000,
     categoryName: "women",
     rating:4
   },

@@ -16,6 +16,7 @@ export const AppProvider = ({ children }) => {
     price: 0,
     wishlist: [],
     cartItems: [],
+    checkout: { price: 0, shipping: 0, amount: 0 },
   };
 
   const reducerFun = (state, action) => {
@@ -49,7 +50,7 @@ export const AppProvider = ({ children }) => {
       case "SHOW_PRODUCT":
         return {
           ...state,
-          product: action.payload
+          product: action.payload,
         };
 
       case "CATEGORY":
@@ -71,13 +72,13 @@ export const AppProvider = ({ children }) => {
           price: action.payload,
           filteredProducts: applyFilter({ ...state, price: action.payload }),
         };
-      case 'CLEAR_FILTERS':
-        return{
+      case "CLEAR_FILTERS":
+        return {
           ...state,
-          category:"",
-          rating:'',
-          filteredProducts: state.allProducts
-        }
+          category: "",
+          rating: "",
+          filteredProducts: state.allProducts,
+        };
       case "WISHLIST":
         const updatedFilteredProducts = state.filteredProducts.map((product) =>
           product._id === action.payload
@@ -159,11 +160,38 @@ export const AppProvider = ({ children }) => {
           ...state,
           cartItems: state.allProducts.filter(({ inCart }) => inCart),
         };
-      case 'SHOW_WISHLIST_ITEMS':
+      case "SHOW_WISHLIST_ITEMS":
         return {
           ...state,
           wishlist: state.allProducts.filter(({ inWishlist }) => inWishlist),
-        }  
+        };
+      case "CHECKOUT":
+        console.log("checkout");
+        return {
+          ...state,
+          checkout: state.cartItems.reduce(
+            (sum, currentValue) =>
+              // sum.price > 1000
+              // ? {...sum, price:sum.price + currentValue.price, shipping: 0}
+              // : {...sum, shipping: 50}
+
+              sum.price > 1000
+                ? {
+                    ...sum,
+                    price: sum.price + currentValue.price,
+                    shipping:0,
+                    amount: sum.price + currentValue.price,
+                  }
+                : {
+                    ...sum,
+                    price: sum.price + currentValue.price,
+                    shipping: 50,
+                    amount: sum.price + currentValue.price + 50,
+                  },
+
+            { price: 0, shipping: 0, amount: 0 }
+          ),
+        };
       default:
         return state;
     }
@@ -219,10 +247,10 @@ export const AppProvider = ({ children }) => {
   const getCartItems = () => {
     dispatch({ type: "SHOW_CART_ITEMS" });
   };
-  
+
   const getWishlistItems = () => {
-    dispatch({type: 'SHOW_WISHLIST_ITEMS'})
-  }
+    dispatch({ type: "SHOW_WISHLIST_ITEMS" });
+  };
   useEffect(() => {
     getProducts();
   }, []);
