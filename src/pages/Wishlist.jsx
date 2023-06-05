@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import ProductDetails from "../components/ProductDetails";
 import Navbar from "../components/Navbar";
+import styles from './Wishlist.module.css';
 
 const Wishlist = () => {
   const {
@@ -21,18 +22,20 @@ const Wishlist = () => {
     <>
       <Navbar />
       <h2>Wishlist</h2>
-      {wishlist.length > 0 ? (
-        wishlist.map((product) => (
-          <ProductDetails
-            {...product}
-            removeWishlist={removeWishlist}
-            handleAddToCart={handleAddToCart}
-            wishlistItem
-          />
-        ))
-      ) : (
-        <p>You wishlist is empty</p>
-      )}
+      <section className={styles["wishlist-page"]} >
+        {wishlist.length > 0 ? (
+          wishlist.map((product) => (
+            <ProductDetails
+              {...product}
+              removeWishlist={removeWishlist}
+              handleAddToCart={handleAddToCart}
+              wishlistItem
+            />
+          ))
+        ) : (
+          <p>You wishlist is empty</p>
+        )}
+      </section>
     </>
   );
 };

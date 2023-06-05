@@ -13,7 +13,7 @@ const {appState:{orders}} = useContext(AppContext)
       <p>{title} - {(`${price} X ${quantity}`)}</p>
       </div>
       <div>
-        <p>{price * quantity}</p>
+        <p>Rs:{price * quantity}</p>
       </div>
     </div>)}
   </section>

@@ -1,0 +1,11 @@
+.price-details{
+    
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.price-section{
+    border: 0.5px solid #cccccc;
+    padding: 1rem;
+}

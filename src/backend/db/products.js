@@ -11,16 +11,16 @@ export const products = [
     title: "Black tshirt",
     image: "https://i.postimg.cc/Df6BZSsW/MS1925-A-2.jpg",
     brand: "levis",
-    price: 5000,
+    price: 500,
     categoryName: "men",
     rating:5
   },
   {
     _id: 2,
-    title: "Pink tshirt",
+    title: "Pink shirt",
     image: "https://i.postimg.cc/Gmgg9zDX/LS3712-B-2.jpg",
     brand: "h&m",
-    price: 4000,
+    price: 1000,
     categoryName: "women",
     rating:4
   },
@@ -36,9 +36,9 @@ export const products = [
   
   {
     _id: 4,
-    title: "White shirt",
-    image: "https://i.postimg.cc/Df6BZSsW/MS1925-A-2.jpg",
-    brand: "arrow",
+    title: "Khakhi tshirt",
+    image: "https://i.postimg.cc/zfqmYYQZ/MT3291-B-1.jpg",
+    brand: "Zara",
     price: 2000,
     categoryName: "men",
     rating:2
@@ -46,18 +46,18 @@ export const products = [
   {
     _id: 5,
     title: "White shirt",
-    image: "https://i.postimg.cc/Df6BZSsW/MS1925-A-2.jpg",
-    brand: "arrow",
-    price: 1000,
-    categoryName: "men",
+    image: "https://i.postimg.cc/x8LDSj9Q/LS3713-B-1.jpg",
+    brand: "Ralph lauren",
+    price: 2000,
+    categoryName: "women",
     rating:1
   },
   {
     _id: 6,
     title: "Pink tshirt",
-    image: "https://i.postimg.cc/Df6BZSsW/MS1925-A-2.jpg",
+    image: "https://i.postimg.cc/3N5V9Mmc/LO3236-B-1.jpg",
     brand: "h&m",
-    price: 4000,
+    price: 1500,
     categoryName: "women",
     rating:4
   },

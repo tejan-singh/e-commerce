@@ -3,7 +3,7 @@ import { AppContext } from "../context/AppContext";
 
 const Filters = () => {
   const {
-    appState: { allRatings, allCategories , category,rating},
+    appState: { allRatings, allCategories, category, rating, price },
     dispatch,
   } = useContext(AppContext);
 
@@ -20,27 +20,38 @@ const Filters = () => {
   };
 
   const handleClearFilters = () => {
-    dispatch({type: 'CLEAR_FILTERS'})
-  }
+    dispatch({ type: "CLEAR_FILTERS" });
+  };
 
   return (
     <div>
       <p>Filters</p>
       <div>
         <label htmlFor="price">Price</label>
-        <input onChange={handlePrice} type="range" name="price" min={0} max={5000} step={1000} />
+        <input
+          onChange={handlePrice}
+          value={price}
+          type="range"
+          name="price"
+          min={0}
+          max={5000}
+          step={1000}
+          list='price-tag'
+        />
       </div>
 
       <div>
         <p>Category</p>
         <select onChange={handleCategory} value={category} name="category">
-        <option value="">Select</option>
-          {allCategories.map( (category)=>  <option value={category}>{category}</option>)}
+          <option value="">Select</option>
+          {allCategories.map((category) => (
+            <option value={category}>{category}</option>
+          ))}
         </select>
       </div>
 
       <div>
-      <p>Rating</p>
+        <p>Rating</p>
         <select name="rating" onChange={handleRating} value={rating}>
           <option value="">Select</option>
           {allRatings.map((rating) => (
@@ -49,10 +60,7 @@ const Filters = () => {
         </select>
       </div>
 
-      
-      <button onClick={handleClearFilters}>Clear Filters</button> 
-         
-
+      <button onClick={handleClearFilters}>Clear Filters</button>
     </div>
   );
 };

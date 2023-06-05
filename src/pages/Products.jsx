@@ -5,6 +5,7 @@ import Error from "./Error";
 import Filters from "../components/Filters";
 import ProductDetails from "../components/ProductDetails";
 import Navbar from "../components/Navbar";
+import styles from './Products.module.css'
 
 const Products = () => {
   const {
@@ -22,25 +23,29 @@ const Products = () => {
 
   const handleAddToCart = (_id) => {
     dispatch({ type: "ADD_TO_CART", payload: _id });
-  }
+  };
 
   if (loading) return <Loading />;
   if (errorMsg) return <Error />;
 
   return (
     <>
-    <Navbar/>
-      <Filters />
-      {filteredProducts.map((product) => (
-        
-        <ProductDetails 
-        {...product}
-        showProduct={showProduct}
-        handleWishlist={handleWishlist}
-        handleAddToCart={handleAddToCart}
-         />
-        
-      ))}
+      <Navbar />
+      <main className={styles.products}>
+        <section>
+          <Filters />
+        </section>
+        <section className={styles["product-list"]}>
+          {filteredProducts.map((product) => (
+            <ProductDetails
+              {...product}
+              showProduct={showProduct}
+              handleWishlist={handleWishlist}
+              handleAddToCart={handleAddToCart}
+            />
+          ))}
+        </section>
+      </main>
     </>
   );
 };

@@ -3,12 +3,14 @@ import { Link, useParams } from "react-router-dom";
 import styles from "./ProductDetails.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const ProductDetails = ({
   title,
-  author,
   price,
   image,
   id,
+  brand,
+  rating,
   _id,
   isAddedToCart,
   inCart,
@@ -39,11 +41,12 @@ const ProductDetails = ({
   return (
     <>
       <article className={styles["product-desc"]} key={id}>
-        {!isProduct && <Link to={`/products/${_id}`}>{title}</Link>}
         <img src={image} alt="" />
-        <p>{author}</p>
-        <p>{price}</p>
-
+        {!isProduct && <Link to={`/products/${_id}`}>{title}</Link>}
+        <p>{title}</p>
+        <p>{brand}</p>
+        <p>Rs:{price}</p>
+        <p>Rating: {rating} star</p>
         {isAddedToCart ? (
           <>
             <button onClick={() => handleQuantityDecrease(_id)}>-</button>
@@ -61,9 +64,9 @@ const ProductDetails = ({
         ) : (
           <>
             {inCart && (
-              <button>
-                <Link to={"/cart"}>Go to Cart</Link>
-              </button>
+              <Link to={"/cart"}>
+                <button>Go to Cart</button>
+              </Link>
             )}
             {!inCart && (
               <button
@@ -90,9 +93,9 @@ const ProductDetails = ({
         ) : (
           <>
             {inWishlist && (
-              <button>
-                <Link to={"/wishlist"}>Go to wishlist</Link>
-              </button>
+              <Link to={"/wishlist"}>
+                <button>Go to wishlist</button>
+              </Link>
             )}
             {!inWishlist && (
               <button

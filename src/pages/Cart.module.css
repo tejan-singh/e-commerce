@@ -1,0 +1,10 @@
+.cart-page{
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-section{
+    display: flex;
+    margin-right: 100px;
+}

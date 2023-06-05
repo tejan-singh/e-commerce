@@ -3,6 +3,7 @@ import { AppContext } from "../context/AppContext";
 import ProductDetails from "../components/ProductDetails";
 import PriceDetails from "../components/PriceDetails";
 import Navbar from "../components/Navbar";
+import styles from './Cart.module.css'
 
 const Cart = () => {
   const {
@@ -27,18 +28,20 @@ const Cart = () => {
   };
 
   const handleQuantityDecrease = (_id) => {
-    dispatch({type: 'DECREASE_QUANTITY', payload: _id})
-  }
+    dispatch({ type: "DECREASE_QUANTITY", payload: _id });
+  };
 
   const handleQuantityIncrease = (_id) => {
-    dispatch({type: 'INCREASE_QUANTITY', payload: _id})
-  }
+    dispatch({ type: "INCREASE_QUANTITY", payload: _id });
+  };
 
   return (
     <>
-      <Navbar/>
-      <section>
-        <h1>Cart</h1>
+      <Navbar />
+      <h1>Cart</h1>
+      <main className={styles["cart-page"]}>
+      <section className={styles["cart-section"]}>
+        
         {cartItems.length > 0 ? (
           cartItems.map((product) => (
             <ProductDetails
@@ -56,7 +59,10 @@ const Cart = () => {
           <p>Your cart is empty</p>
         )}
       </section>
-      <section>{cartItems.length > 0 && <PriceDetails isAddedToCart/>}</section>
+      <section>
+        {cartItems.length > 0 && <PriceDetails isAddedToCart />}
+      </section>
+      </main>
     </>
   );
 };

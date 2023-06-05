@@ -72,6 +72,7 @@ export const reducerFun = (state, action) => {
         ...state,
         category: "",
         rating: "",
+        price: 0,
         filteredProducts: state.allProducts,
       };
     case "WISHLIST":
@@ -200,7 +201,6 @@ export const reducerFun = (state, action) => {
           }
         }
       );
-
       return {
         ...state,
         allProducts: allProductsWithDecreasedQuantityWithId,
@@ -210,7 +210,6 @@ export const reducerFun = (state, action) => {
       const updatedAllProductsWithClearCart = state.allProducts.map((product) =>
         product.inCart ? { ...product, inCart: false } : product
       );
-
       return {
         ...state,
         cartItems: [],
@@ -218,6 +217,12 @@ export const reducerFun = (state, action) => {
         allProducts: updatedAllProductsWithClearCart,
         filteredProducts: updatedAllProductsWithClearCart,
       };
+      case "SHOW_CATEGORY_PRODUCTS":
+        return{
+          ...state,
+          category: action.payload,
+          filteredProducts:applyFilter({...state,category:action.payload})
+        }
     default:
       return state;
   }
