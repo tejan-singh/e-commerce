@@ -48,7 +48,6 @@ const Cart = () => {
               removeWishlist={removeWishlist}
               handleQuantityIncrease={handleQuantityIncrease}
               handleQuantityDecrease={handleQuantityDecrease}
-
             />
           ))
         ) : (

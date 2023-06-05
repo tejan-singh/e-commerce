@@ -17,7 +17,7 @@ const PriceDetails = ({ isAddedToCart, isCheckout }) => {
   }, [cartItems]);
 
   const clearCart = () => {
-    dispatch({ type: "CLEAR_CART"});
+    dispatch({ type: "CLEAR_CART" });
   };
 
   return (
