@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { AppContext } from "../context/AppContext";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-const PriceDetails = () => {
+const PriceDetails = ({ isAddedToCart, isCheckout }) => {
   const {
     appState: { priceDetails, cartItems },
     dispatch,
@@ -15,6 +15,10 @@ const PriceDetails = () => {
 
     getPrice();
   }, [cartItems]);
+
+  const clearCart = () => {
+    dispatch({ type: "CLEAR_CART"});
+  };
 
   return (
     <>
@@ -31,7 +35,16 @@ const PriceDetails = () => {
           <h2>{priceDetails.amount}</h2>
         </div>
       </section>
-      <button><Link to="/checkout">Checkout</Link></button>
+      {isAddedToCart && (
+        <button>
+          <Link to="/checkout">Checkout</Link>
+        </button>
+      )}
+      {isCheckout && (
+        <button onClick={clearCart}>
+          <Link to="/order-summary">Place order</Link>
+        </button>
+      )}
     </>
   );
 };

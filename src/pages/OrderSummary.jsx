@@ -1,0 +1,27 @@
+import React, { useContext, useEffect } from "react";
+import OrderDetails from "../components/OrderDetails";
+import { AppContext } from "../context/AppContext";
+import { Link } from "react-router-dom";
+
+const OrderSummary = () => {
+  const {
+    appState: { priceDetails, orders },
+  } = useContext(AppContext);
+
+  return (
+    <>
+      {orders.length > 0 ? (
+        <>
+          <h3>Your order is confirmed</h3>
+          <OrderDetails />
+          <p>Your total amount is {priceDetails.amount}</p>
+          <button ><Link to="/products">Browse more</Link></button>
+        </>
+      )
+      : <p>Your don't have any orders</p>
+      }
+    </>
+  );
+};
+
+export default OrderSummary;

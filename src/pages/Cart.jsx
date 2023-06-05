@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import ProductDetails from "../components/ProductDetails";
-import PriceDetails from "./PriceDetails";
+import PriceDetails from "../components/PriceDetails";
 
 const Cart = () => {
   const {
@@ -55,7 +55,7 @@ const Cart = () => {
           <p>Your cart is empty</p>
         )}
       </section>
-      <section>{cartItems.length > 0 && <PriceDetails />}</section>
+      <section>{cartItems.length > 0 && <PriceDetails isAddedToCart/>}</section>
     </>
   );
 };

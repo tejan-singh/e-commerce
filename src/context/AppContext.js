@@ -17,6 +17,7 @@ export const AppProvider = ({ children }) => {
     wishlist: [],
     cartItems: [],
     priceDetails: { bill: 0, shipping: 0, amount: 0 },
+    orders:[]
   };
 
   const reducerFun = (state, action) => {
@@ -212,7 +213,18 @@ export const AppProvider = ({ children }) => {
           ...state,
           allProducts: allProductsWithDecreasedQuantityWithId,
         };
-
+      
+      case 'CLEAR_CART':
+        console.log("reducer cart")
+        const updatedAllProductsWithClearCart = state.allProducts.map((product) => product.inCart ? {...product, inCart: false} : product )
+        
+        return {
+          ...state,
+          cartItems:[],
+          orders:state.cartItems,
+          allProducts:updatedAllProductsWithClearCart,
+          filteredProducts: updatedAllProductsWithClearCart
+        }
       default:
         return state;
     }
