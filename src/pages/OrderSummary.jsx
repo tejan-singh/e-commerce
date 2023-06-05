@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import OrderDetails from "../components/OrderDetails";
 import { AppContext } from "../context/AppContext";
 import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 const OrderSummary = () => {
   const {
@@ -10,6 +11,7 @@ const OrderSummary = () => {
 
   return (
     <>
+    <Navbar/>
       {orders.length > 0 ? (
         <>
           <h3>Your order is confirmed</h3>

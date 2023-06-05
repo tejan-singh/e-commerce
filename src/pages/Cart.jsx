@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import ProductDetails from "../components/ProductDetails";
 import PriceDetails from "../components/PriceDetails";
+import Navbar from "../components/Navbar";
 
 const Cart = () => {
   const {
@@ -35,6 +36,7 @@ const Cart = () => {
 
   return (
     <>
+      <Navbar/>
       <section>
         <h1>Cart</h1>
         {cartItems.length > 0 ? (

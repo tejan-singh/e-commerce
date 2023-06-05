@@ -4,6 +4,7 @@ import Loading from "../components/Loading";
 import Error from "./Error";
 import Filters from "../components/Filters";
 import ProductDetails from "../components/ProductDetails";
+import Navbar from "../components/Navbar";
 
 const Products = () => {
   const {
@@ -28,6 +29,7 @@ const Products = () => {
 
   return (
     <>
+    <Navbar/>
       <Filters />
       {filteredProducts.map((product) => (
         
