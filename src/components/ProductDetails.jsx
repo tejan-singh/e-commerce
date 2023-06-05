@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import styles from './ProductDetails.module.css'
+import styles from "./ProductDetails.module.css";
 const ProductDetails = ({
   title,
   author,
@@ -8,29 +8,33 @@ const ProductDetails = ({
   image,
   id,
   _id,
-  isAddToCart,
+  isAddedToCart,
   inCart,
   inWishlist,
-  showProduct,
   handleWishlist,
   removeWishlist,
   wishlistItem,
   handleAddToCart,
   removeCartItem,
-  isProduct
+  isProduct,
+  handleQuantityIncrease,
+  handleQuantityDecrease,
+  quantity
 }) => {
-
   return (
-    <article className={styles['product-desc']} key={id}>
-      {!isProduct && <Link to={`/products/${_id}`}>
-        {title}
-      </Link>}
+    <article className={styles["product-desc"]} key={id}>
+      {!isProduct && <Link to={`/products/${_id}`}>{title}</Link>}
       <img src={image} alt="" />
       <p>{author}</p>
       <p>{price}</p>
 
-      {isAddToCart ? (
-        <button onClick={() => removeCartItem(_id)}>Remove from Cart</button>
+      {isAddedToCart ? (
+        <>
+          <button onClick={() => handleQuantityDecrease(_id)}>-</button>
+          {quantity}
+          <button onClick={() => handleQuantityIncrease(_id)}>+</button>
+          <button onClick={() => removeCartItem(_id)}>Remove from Cart</button>
+        </>
       ) : (
         <>
           {inCart && (

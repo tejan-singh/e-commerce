@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import ProductDetails from "../components/ProductDetails";
-import Checkout from "./Checkout";
+import PriceDetails from "./PriceDetails";
 
 const Cart = () => {
   const {
@@ -21,6 +21,18 @@ const Cart = () => {
     dispatch({ type: "REMOVE_FROM_WISHLIST", payload: _id });
   };
 
+  const handleAddToCart = (_id) => {
+    dispatch({ type: "ADD_TO_CART", payload: _id });
+  };
+
+  const handleQuantityDecrease = (_id) => {
+    dispatch({type: 'DECREASE_QUANTITY', payload: _id})
+  }
+
+  const handleQuantityIncrease = (_id) => {
+    dispatch({type: 'INCREASE_QUANTITY', payload: _id})
+  }
+
   return (
     <>
       <section>
@@ -28,18 +40,22 @@ const Cart = () => {
         {cartItems.length > 0 ? (
           cartItems.map((product) => (
             <ProductDetails
-              isAddToCart
+              isAddedToCart
               {...product}
+              handleAddToCart={handleAddToCart}
               removeCartItem={removeCartItem}
               handleWishlist={handleWishlist}
               removeWishlist={removeWishlist}
+              handleQuantityIncrease={handleQuantityIncrease}
+              handleQuantityDecrease={handleQuantityDecrease}
+
             />
           ))
         ) : (
           <p>Your cart is empty</p>
         )}
       </section>
-      <section>{cartItems.length > 0 && <Checkout />}</section>
+      <section>{cartItems.length > 0 && <PriceDetails />}</section>
     </>
   );
 };

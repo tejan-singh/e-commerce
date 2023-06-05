@@ -16,7 +16,7 @@ export const AppProvider = ({ children }) => {
     price: 0,
     wishlist: [],
     cartItems: [],
-    checkout: { price: 0, shipping: 0, amount: 0 },
+    priceDetails: { bill: 0, shipping: 0, amount: 0 },
   };
 
   const reducerFun = (state, action) => {
@@ -121,13 +121,13 @@ export const AppProvider = ({ children }) => {
         const updatedFilteredProductsCart = state.filteredProducts.map(
           (product) =>
             product._id === action.payload
-              ? { ...product, inCart: true }
+              ? { ...product, inCart: true, quantity: 1 }
               : product
         );
 
         const updatedAllProductsCart = state.allProducts.map((product) =>
           product._id === action.payload
-            ? { ...product, inCart: true }
+            ? { ...product, inCart: true, quantity: 1 }
             : product
         );
         return {
@@ -165,33 +165,54 @@ export const AppProvider = ({ children }) => {
           ...state,
           wishlist: state.allProducts.filter(({ inWishlist }) => inWishlist),
         };
-      case "CHECKOUT":
-        console.log("checkout");
+      case "GET_PRICE_DETAILS":
+        const totalPrice = state.cartItems.reduce(
+          (sum, currentValue) => sum + currentValue.price,
+          0
+        );
+        const shippingFee = totalPrice > 1000 ? 0 : 50;
+        const totalAmount = totalPrice + shippingFee;
         return {
           ...state,
-          checkout: state.cartItems.reduce(
-            (sum, currentValue) =>
-              // sum.price > 1000
-              // ? {...sum, price:sum.price + currentValue.price, shipping: 0}
-              // : {...sum, shipping: 50}
-
-              sum.price > 1000
-                ? {
-                    ...sum,
-                    price: sum.price + currentValue.price,
-                    shipping:0,
-                    amount: sum.price + currentValue.price,
-                  }
-                : {
-                    ...sum,
-                    price: sum.price + currentValue.price,
-                    shipping: 50,
-                    amount: sum.price + currentValue.price + 50,
-                  },
-
-            { price: 0, shipping: 0, amount: 0 }
-          ),
+          priceDetails: {
+            bill: totalPrice,
+            shipping: shippingFee,
+            amount: totalAmount,
+          },
         };
+      case "INCREASE_QUANTITY":
+        const allProductsWithIncreasedQuantityWithId = state.allProducts.map(
+          (product) =>
+            product._id === action.payload
+              ? { ...product, quantity: product.quantity + 1 }
+              : product
+        );
+
+        return {
+          ...state,
+          allProducts: allProductsWithIncreasedQuantityWithId,
+        };
+
+      case "DECREASE_QUANTITY":
+        const allProductsWithDecreasedQuantityWithId = state.allProducts.map(
+          (product) => {
+            if (product._id === action.payload) {
+              if (product.quantity > 1) {
+                return { ...product, quantity: product.quantity - 1 };
+              }
+
+              return { ...product, quantity: 1 };
+            } else {
+              return product;
+            }
+          }
+        );
+
+        return {
+          ...state,
+          allProducts: allProductsWithDecreasedQuantityWithId,
+        };
+
       default:
         return state;
     }
