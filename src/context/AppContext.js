@@ -167,7 +167,7 @@ export const AppProvider = ({ children }) => {
         };
       case "GET_PRICE_DETAILS":
         const totalPrice = state.cartItems.reduce(
-          (sum, currentValue) => sum + currentValue.price,
+          (sum, currentValue) => sum + (currentValue.price * currentValue.quantity),
           0
         );
         const shippingFee = totalPrice > 1000 ? 0 : 50;
