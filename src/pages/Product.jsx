@@ -30,7 +30,7 @@ const Product = () => {
   return (
     <>
     <Navbar/>
-      <p>ProductDetail</p>
+      <p>Product Detail</p>
       <ProductDetails
         key={product._id}
         isProduct
