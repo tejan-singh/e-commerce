@@ -38,6 +38,7 @@ export const AppProvider = ({ children }) => {
       { id: 2, details: "123 xyz road, Jaipur, Rajasthan" },
     ],
     selectedAddress: "",
+    deliveryAddress:""
   };
 
   const [appState, dispatch] = useReducer(reducerFun, initialState);

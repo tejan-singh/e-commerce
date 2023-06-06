@@ -20,6 +20,10 @@ const PriceDetails = ({ isAddedToCart, isCheckout }) => {
     dispatch({ type: "CLEAR_CART" });
   };
 
+  const clearSelectedAddress = () => {
+    dispatch({ type: "CLEAR_SELECTED_ADDRESS" });
+  };
+
   return (
     <div className={styles['price-section']}>
       <h2>Price details</h2>
@@ -42,7 +46,12 @@ const PriceDetails = ({ isAddedToCart, isCheckout }) => {
       )}
       {isCheckout && (
         <Link to="/order-summary">
-          <button onClick={clearCart}>Place order </button>
+          <button onClick={
+           () => {
+            clearCart()
+            clearSelectedAddress()
+           }
+            }>Place order </button>
         </Link>
       )}
     </div>

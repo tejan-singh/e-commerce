@@ -1,13 +1,12 @@
 import React, { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import PriceDetails from "../components/PriceDetails";
-import OrderDetails from "../components/OrderDetails";
 import Navbar from "../components/Navbar";
 import AddressDetails from "../components/AddressDetails";
 
 const Checkout = () => {
   const {
-    appState: { cartItems, address, selectedAddress },
+    appState: { cartItems, selectedAddress },
   } = useContext(AppContext);
 
   return (

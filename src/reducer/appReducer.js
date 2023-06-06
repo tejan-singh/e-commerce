@@ -316,6 +316,12 @@ export const reducerFun = (state, action) => {
         ...state,
         selectedAddress: state.address.find( ({id}) => id === action.payload)
       }
+    case 'CLEAR_SELECTED_ADDRESS':
+      return {
+        ...state,
+        deliveryAddress: state.selectedAddress,
+        selectedAddress:""
+      }  
 
     default:
       return state;
