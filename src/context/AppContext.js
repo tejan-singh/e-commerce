@@ -14,12 +14,14 @@ export const AppProvider = ({ children }) => {
     category: "",
     rating: "",
     price: 0,
+    isSortHighToLow: false,
+    isSortLowToHigh: false,
     wishlist: [],
     cartItems: [],
     priceDetails: { bill: 0, shipping: 0, amount: 0 },
     orders: [],
     searchQuery: "",
-    isLogin: false,
+    isLogin: true,
     users: [
       {
         id: 1,
@@ -31,6 +33,11 @@ export const AppProvider = ({ children }) => {
     loginInput: { email: "", password: "" },
     signupInput: { name: "", email: "", password: "" },
     warning: "",
+    address: [
+      { id: 1, details: "133 xyz road, Jaipur, Rajasthan" },
+      { id: 2, details: "123 xyz road, Jaipur, Rajasthan" },
+    ],
+    selectedAddress: "",
   };
 
   const [appState, dispatch] = useReducer(reducerFun, initialState);

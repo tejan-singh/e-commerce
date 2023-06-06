@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import styles from "./ProductDetails.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { RequireAuth } from "../utils/RequireAuth";
 
 const ProductDetails = ({
   title,
@@ -69,14 +70,18 @@ const ProductDetails = ({
               </Link>
             )}
             {!inCart && (
-              <button
-                onClick={() => {
-                  handleAddToCart(_id);
-                  showAlert("Added to cart");
-                }}
-              >
-                Add to Cart
-              </button>
+              <>
+              {/* <RequireAuth> */}
+                <button
+                  onClick={() => {
+                    handleAddToCart(_id);
+                    showAlert("Added to cart");
+                  }}
+                >
+                  Add to Cart
+                </button>
+              {/* </RequireAuth> */}
+              </>
             )}
           </>
         )}

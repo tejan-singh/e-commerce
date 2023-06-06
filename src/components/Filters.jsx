@@ -3,7 +3,15 @@ import { AppContext } from "../context/AppContext";
 
 const Filters = () => {
   const {
-    appState: { allRatings, allCategories, category, rating, price },
+    appState: {
+      allRatings,
+      allCategories,
+      category,
+      rating,
+      price,
+      isSortHighToLow,
+      isSortLowToHigh,
+    },
     dispatch,
   } = useContext(AppContext);
 
@@ -19,6 +27,14 @@ const Filters = () => {
     dispatch({ type: "PRICE", payload: parseInt(e.target.value) });
   };
 
+  const handleHighToLow = (e) => {
+    dispatch({ type: "HIGH_TO_LOW" });
+  };
+
+  const handleLowToHigh = (e) => {
+    dispatch({ type: "LOW_TO_HIGH" });
+  };
+
   const handleClearFilters = () => {
     dispatch({ type: "CLEAR_FILTERS" });
   };
@@ -26,6 +42,27 @@ const Filters = () => {
   return (
     <div>
       <p>Filters</p>
+      <div>
+        <div>
+          <input
+            type="radio"
+            name="sort"
+            onChange={handleHighToLow}
+            value={isSortHighToLow}
+          />
+          <label htmlFor="sort">high to low</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="sort"
+            onChange={handleLowToHigh}
+            value={isSortLowToHigh}
+          />
+          <label htmlFor="sort">low to high</label>
+        </div>
+      </div>
+      <br />
       <div>
         <label htmlFor="price">Price</label>
         <input
@@ -36,7 +73,7 @@ const Filters = () => {
           min={0}
           max={5000}
           step={1000}
-          list='price-tag'
+          list="price-tag"
         />
       </div>
 

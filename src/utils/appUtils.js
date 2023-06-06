@@ -4,6 +4,8 @@ export const applyFilter = ({
     rating,
     price,
     searchQuery,
+    isSortHighToLow,
+    isSortLowToHigh
   }) => {
     let filteredProducts = [...allProducts];
 
@@ -29,6 +31,14 @@ export const applyFilter = ({
       filteredProducts = filteredProducts.filter(
         (product) => product.price >= price
       );
+    }
+
+    if (isSortHighToLow) {
+      filteredProducts = filteredProducts.sort((a, b) => b.price - a.price);
+    }
+
+    if (isSortLowToHigh) {
+      filteredProducts = filteredProducts.sort((a, b) => a.price - b.price);
     }
 
     return filteredProducts;

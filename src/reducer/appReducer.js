@@ -53,6 +53,25 @@ export const reducerFun = (state, action) => {
         price: action.payload,
         filteredProducts: applyFilter({ ...state, price: action.payload }),
       };
+      case "HIGH_TO_LOW":
+        return {
+          ...state,
+          isSortHighToLow: !state.isSortHighToLow,
+          filteredProducts: applyFilter({
+            ...state,
+            isSortHighToLow: !state.isSortHighToLow
+          })
+        };
+      case "LOW_TO_HIGH":
+        return {
+          ...state,
+          isSortLowToHigh: !state.isSortLowToHigh,
+          filteredProducts: applyFilter({
+            ...state,
+            isSortLowToHigh: !state.isSortLowToHigh
+          })
+        };
+
     case "HANDLE_SEARCH_CHANGE":
       return {
         ...state,
@@ -292,6 +311,12 @@ export const reducerFun = (state, action) => {
         ...state,
         isLogin: true,
       };
+    case 'SET_ADDRESS':
+      return {
+        ...state,
+        selectedAddress: state.address.find( ({id}) => id === action.payload)
+      }
+
     default:
       return state;
   }

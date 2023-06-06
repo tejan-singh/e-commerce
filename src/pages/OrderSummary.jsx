@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar";
 
 const OrderSummary = () => {
   const {
-    appState: { priceDetails, orders },
+    appState: { priceDetails, orders, selectedAddress },
   } = useContext(AppContext);
 
   return (
@@ -16,6 +16,11 @@ const OrderSummary = () => {
         <>
           <h3>Your order is confirmed</h3>
           <OrderDetails />
+          {selectedAddress && (
+            <p>
+              <b>Delivery Address: {selectedAddress.details}</b>
+            </p>
+          )}
           <p>Your total amount is {priceDetails.amount}</p>
           <Link to="/products"><button >Browse more</button></Link>
         </>
