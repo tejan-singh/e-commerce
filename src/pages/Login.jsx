@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styles from "./Login.module.css";
 import Navbar from "../components/Navbar";
 import { AppContext } from "../context/AppContext";
-import { useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const {
@@ -19,7 +19,6 @@ const Login = () => {
 
   const handleEmailChange = (e) => {
     dispatch({ type: "LOGIN_INPUT_EMAIL", payload: e.target.value });
-    navigate(location?.state?.from?.pathname);
   };
 
   const handlePasswordChange = (e) => {
@@ -28,10 +27,12 @@ const Login = () => {
 
   const handleLogin = () => {
     dispatch({ type: "LOGIN" });
+    navigate(location?.state?.from?.pathname);
   };
 
   const handleLoginAsGuest = () => {
     dispatch({ type: "LOGIN_AS_GUEST" });
+    navigate(location?.state?.from?.pathname);
   };
 
   return (
