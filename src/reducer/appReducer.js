@@ -53,15 +53,17 @@ export const reducerFun = (state, action) => {
         price: action.payload,
         filteredProducts: applyFilter({ ...state, price: action.payload }),
       };
-      case "SORT_BY_PRICE":
-        return {
+    case "SORT_BY_PRICE":
+      return {
+        ...state,
+        sortBy: action.payload,
+        isSortHighToLow: action.payload === "highToLow" ? true : false,
+        isSortLowToHigh: action.payload === "lowToHigh" ? true : false,
+        filteredProducts: applyFilter({
           ...state,
           sortBy: action.payload,
-          filteredProducts: applyFilter({
-            ...state,
-            sortBy: action.payload
-          })
-        };
+        }),
+      };
 
     case "HANDLE_SEARCH_CHANGE":
       return {
@@ -83,6 +85,8 @@ export const reducerFun = (state, action) => {
         category: "",
         rating: "",
         price: 0,
+        isSortHighToLow:false,
+        isSortLowToHigh:false,
         filteredProducts: state.allProducts,
       };
     case "WISHLIST":
@@ -302,17 +306,17 @@ export const reducerFun = (state, action) => {
         ...state,
         isLogin: true,
       };
-    case 'SET_ADDRESS':
+    case "SET_ADDRESS":
       return {
         ...state,
-        selectedAddress: state.address.find( ({id}) => id === action.payload)
-      }
-    case 'CLEAR_SELECTED_ADDRESS':
+        selectedAddress: state.address.find(({ id }) => id === action.payload),
+      };
+    case "CLEAR_SELECTED_ADDRESS":
       return {
         ...state,
         deliveryAddress: state.selectedAddress,
-        selectedAddress:""
-      }  
+        selectedAddress: "",
+      };
 
     default:
       return state;

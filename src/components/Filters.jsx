@@ -46,6 +46,7 @@ const Filters = () => {
             name="sort"
             onClick={handleSort}
             value="highToLow"
+            checked={isSortHighToLow}
           />
           <label htmlFor="sort">high to low</label>
         </div>
@@ -55,6 +56,7 @@ const Filters = () => {
             name="sort"
             onClick={handleSort}
             value="lowToHigh"
+            checked={isSortLowToHigh}
           />
           <label htmlFor="sort">low to high</label>
         </div>

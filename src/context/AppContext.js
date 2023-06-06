@@ -15,6 +15,8 @@ export const AppProvider = ({ children }) => {
     rating: "",
     price: 0,
     sortBy: "",
+    isSortHighToLow: false,
+    isSortLowToHigh: false,
     wishlist: [],
     cartItems: [],
     priceDetails: { bill: 0, shipping: 0, amount: 0 },
