@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import styles from "./Navbar.module.css";
 
-const Navbar = () => {
+const Navbar = ({ isHome }) => {
   const getActiveStyle = ({ isActive }) => ({
     color: isActive ? "red" : "",
   });
@@ -33,19 +33,21 @@ const Navbar = () => {
 
   return (
     <header>
-      <div>
-        <input
-          value={searchQuery}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-          className={styles.search}
-          type="text"
-          placeholder="search for products"
-        />
-        <button onClick={handleSearch} className={styles["search-btn"]}>
-          Search
-        </button>
-      </div>
+      {!isHome && (
+        <div>
+          <input
+            value={searchQuery}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            className={styles.search}
+            type="text"
+            placeholder="search for products"
+          />
+          <button onClick={handleSearch} className={styles["search-btn"]}>
+            Search
+          </button>
+        </div>
+      )}
       <NavLink className={styles.navlink} style={getActiveStyle} to="/">
         Home ||
       </NavLink>

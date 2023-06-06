@@ -16,7 +16,7 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar isHome/>
       <main>
         <h1>Welcome</h1>
         <img
