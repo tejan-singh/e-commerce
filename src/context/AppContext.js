@@ -21,7 +21,7 @@ export const AppProvider = ({ children }) => {
     priceDetails: { bill: 0, shipping: 0, amount: 0 },
     orders: [],
     searchQuery: "",
-    isLogin: true,
+    isLogin: false,
     users: [
       {
         id: 1,
