@@ -28,8 +28,8 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    dispatch({type: 'LOGOUT'})
-  }
+    dispatch({ type: "LOGOUT" });
+  };
 
   return (
     <header>
@@ -58,13 +58,20 @@ const Navbar = () => {
       <NavLink className={styles.navlink} style={getActiveStyle} to="/cart">
         Cart {cartItems.length > 0 && `(${cartItems.length})`} ||
       </NavLink>
+      <NavLink className={styles.navlink} style={getActiveStyle} to="/profile">
+        Profile ||
+      </NavLink>
       {!isLogin && (
         <NavLink className={styles.navlink} style={getActiveStyle} to="/login">
           Login
         </NavLink>
       )}
       {isLogin && (
-        <NavLink className={styles.navlink} style={getActiveStyle} onClick={handleLogout}>
+        <NavLink
+          className={styles.navlink}
+          style={getActiveStyle}
+          onClick={handleLogout}
+        >
           Logout
         </NavLink>
       )}

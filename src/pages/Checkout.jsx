@@ -18,7 +18,6 @@ const Checkout = () => {
       {cartItems.length > 0 ? (
         <>
           <AddressDetails />
-          <OrderDetails />
           <PriceDetails isCheckout />
           {selectedAddress && (
             <p>

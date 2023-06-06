@@ -10,8 +10,9 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import OrderSummary from "./pages/OrderSummary";
 import { RequireAuth } from "./utils/RequireAuth";
-import Login from './pages/Login'
+import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -24,7 +25,6 @@ function App() {
         <Route path="*" element={<Error404 />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-
 
         <Route
           path="/wishlist"
@@ -51,10 +51,18 @@ function App() {
           }
         />
         <Route
-          path="order-summary"
+          path="/order-summary"
           element={
             <RequireAuth>
               <OrderSummary />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <RequireAuth>
+              <Profile/>
             </RequireAuth>
           }
         />
