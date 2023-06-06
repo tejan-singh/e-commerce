@@ -268,8 +268,7 @@ export const reducerFun = (state, action) => {
       const result = state.users.find(
         ({ email, password }) =>
           email === state.loginInput.email &&
-          (password === state.loginInput.password)
-       
+          password === state.loginInput.password
       );
       if (result) {
         return {
@@ -281,6 +280,17 @@ export const reducerFun = (state, action) => {
       return {
         ...state,
         warning: "invalid user",
+      };
+
+    case "LOGOUT":
+      return {
+        ...state,
+        isLogin: false,
+      };
+    case "LOGIN_AS_GUEST":
+      return {
+        ...state,
+        isLogin: true,
       };
     default:
       return state;

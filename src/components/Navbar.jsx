@@ -22,12 +22,14 @@ const Navbar = () => {
   };
 
   const handleKeyDown = (e) => {
-    console.log("outside");
     if (e.key === "Enter") {
-      console.log("inside");
       dispatch({ type: "HANDLE_SEARCH" });
     }
   };
+
+  const handleLogout = () => {
+    dispatch({type: 'LOGOUT'})
+  }
 
   return (
     <header>
@@ -62,7 +64,7 @@ const Navbar = () => {
         </NavLink>
       )}
       {isLogin && (
-        <NavLink className={styles.navlink} style={getActiveStyle}>
+        <NavLink className={styles.navlink} style={getActiveStyle} onClick={handleLogout}>
           Logout
         </NavLink>
       )}
