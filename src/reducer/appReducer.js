@@ -53,22 +53,13 @@ export const reducerFun = (state, action) => {
         price: action.payload,
         filteredProducts: applyFilter({ ...state, price: action.payload }),
       };
-      case "HIGH_TO_LOW":
+      case "SORT_BY_PRICE":
         return {
           ...state,
-          isSortHighToLow: !state.isSortHighToLow,
+          sortBy: action.payload,
           filteredProducts: applyFilter({
             ...state,
-            isSortHighToLow: !state.isSortHighToLow
-          })
-        };
-      case "LOW_TO_HIGH":
-        return {
-          ...state,
-          isSortLowToHigh: !state.isSortLowToHigh,
-          filteredProducts: applyFilter({
-            ...state,
-            isSortLowToHigh: !state.isSortLowToHigh
+            sortBy: action.payload
           })
         };
 

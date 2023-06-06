@@ -27,12 +27,8 @@ const Filters = () => {
     dispatch({ type: "PRICE", payload: parseInt(e.target.value) });
   };
 
-  const handleHighToLow = (e) => {
-    dispatch({ type: "HIGH_TO_LOW" });
-  };
-
-  const handleLowToHigh = (e) => {
-    dispatch({ type: "LOW_TO_HIGH" });
+  const handleSort = (e) => {
+    dispatch({ type: "SORT_BY_PRICE", payload: e.target.value });
   };
 
   const handleClearFilters = () => {
@@ -41,14 +37,15 @@ const Filters = () => {
 
   return (
     <div>
-      <p>Filters</p>
+      <p><b>Filters</b></p>
       <div>
         <div>
+        <p>Sort by</p>
           <input
             type="radio"
             name="sort"
-            onChange={handleHighToLow}
-            value={isSortHighToLow}
+            onClick={handleSort}
+            value="highToLow"
           />
           <label htmlFor="sort">high to low</label>
         </div>
@@ -56,8 +53,8 @@ const Filters = () => {
           <input
             type="radio"
             name="sort"
-            onChange={handleLowToHigh}
-            value={isSortLowToHigh}
+            onClick={handleSort}
+            value="lowToHigh"
           />
           <label htmlFor="sort">low to high</label>
         </div>
