@@ -5,4 +5,9 @@
 .product-list{
     display: flex;
     flex-direction: row;
+    width: 87%;
+}
+
+.filters{
+    width: 13%;
 }

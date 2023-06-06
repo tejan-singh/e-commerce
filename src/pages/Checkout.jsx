@@ -3,6 +3,7 @@ import { AppContext } from "../context/AppContext";
 import PriceDetails from "../components/PriceDetails";
 import Navbar from "../components/Navbar";
 import AddressDetails from "../components/AddressDetails";
+import OrderDetails from "../components/OrderDetails";
 
 const Checkout = () => {
   const {
@@ -17,6 +18,7 @@ const Checkout = () => {
       {cartItems.length > 0 ? (
         <>
           <AddressDetails />
+          <OrderDetails />
           <PriceDetails isCheckout />
           {selectedAddress && (
             <p>

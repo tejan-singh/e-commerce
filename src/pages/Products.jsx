@@ -32,7 +32,7 @@ const Products = () => {
     <>
       <Navbar />
       <main className={styles.products}>
-        <section>
+        <section className={styles.filters}>
           <Filters />
         </section>
         <section className={styles["product-list"]}>
