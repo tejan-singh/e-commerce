@@ -19,6 +19,18 @@ export const AppProvider = ({ children }) => {
     priceDetails: { bill: 0, shipping: 0, amount: 0 },
     orders: [],
     searchQuery: "",
+    isLogin: false,
+    users: [
+      {
+        id: 1,
+        name: "Adarsh Baalak",
+        email: "adarshbaalak@gmail.com",
+        password: "adarshbaalak",
+      },
+    ],
+    loginInput: { email: "", password: "" },
+    signupInput: { name: "", email: "", password: "" },
+    warning: "",
   };
 
   const [appState, dispatch] = useReducer(reducerFun, initialState);

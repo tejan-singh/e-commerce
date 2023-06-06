@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NavLink, useActionData } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import styles from "./Navbar.module.css";
 
@@ -9,24 +9,25 @@ const Navbar = () => {
   });
 
   const {
-    appState: { cartItems, wishlist, searchQuery }, dispatch
+    appState: { cartItems, wishlist, searchQuery, isLogin },
+    dispatch,
   } = useContext(AppContext);
 
   const handleChange = (e) => {
-    dispatch({type: 'HANDLE_SEARCH_CHANGE', payload:e.target.value})
-  }
+    dispatch({ type: "HANDLE_SEARCH_CHANGE", payload: e.target.value });
+  };
 
   const handleSearch = () => {
-    dispatch({type: 'HANDLE_SEARCH'})
-  }
+    dispatch({ type: "HANDLE_SEARCH" });
+  };
 
   const handleKeyDown = (e) => {
-    console.log('outside')
-    if(e.key === 'Enter'){
-      console.log('inside')
-     dispatch({type: 'HANDLE_SEARCH'})
+    console.log("outside");
+    if (e.key === "Enter") {
+      console.log("inside");
+      dispatch({ type: "HANDLE_SEARCH" });
     }
-  }
+  };
 
   return (
     <header>
@@ -39,7 +40,9 @@ const Navbar = () => {
           type="text"
           placeholder="search for products"
         />
-        <button onClick={handleSearch} className={styles["search-btn"]}>Search</button>
+        <button onClick={handleSearch} className={styles["search-btn"]}>
+          Search
+        </button>
       </div>
       <NavLink className={styles.navlink} style={getActiveStyle} to="/">
         Home ||
@@ -53,7 +56,16 @@ const Navbar = () => {
       <NavLink className={styles.navlink} style={getActiveStyle} to="/cart">
         Cart {cartItems.length > 0 && `(${cartItems.length})`} ||
       </NavLink>
-      
+      {!isLogin && (
+        <NavLink className={styles.navlink} style={getActiveStyle} to="/login">
+          Login
+        </NavLink>
+      )}
+      {isLogin && (
+        <NavLink className={styles.navlink} style={getActiveStyle}>
+          Logout
+        </NavLink>
+      )}
     </header>
   );
 };

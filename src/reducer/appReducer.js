@@ -217,12 +217,71 @@ export const reducerFun = (state, action) => {
         allProducts: updatedAllProductsWithClearCart,
         filteredProducts: updatedAllProductsWithClearCart,
       };
-      case "SHOW_CATEGORY_PRODUCTS":
-        return{
+    case "SHOW_CATEGORY_PRODUCTS":
+      return {
+        ...state,
+        category: action.payload,
+        filteredProducts: applyFilter({ ...state, category: action.payload }),
+      };
+    case "SIGNUP_INPUT_NAME":
+      return {
+        ...state,
+        signupInput: { ...state.signupInput, name: action.payload },
+      };
+
+    case "SIGNUP_INPUT_EMAIL":
+      return {
+        ...state,
+        signupInput: { ...state.signupInput, email: action.payload },
+      };
+
+    case "SIGNUP_INPUT_PASSWORD":
+      return {
+        ...state,
+        signupInput: { ...state.signupInput, password: action.payload },
+      };
+    case "SIGNUP":
+      return {
+        ...state,
+        users: [
+          ...state.users,
+          {
+            id: new Date().valueOf(),
+            name: state.signupInput.name,
+            email: state.signupInput.email,
+            password: state.signupInput.password,
+          },
+        ],
+        signupInput: { name: "", email: "", password: "" },
+      };
+    case "LOGIN_INPUT_EMAIL":
+      return {
+        ...state,
+        loginInput: { ...state.loginInput, email: action.payload },
+      };
+    case "LOGIN_INPUT_PASSWORD":
+      return {
+        ...state,
+        loginInput: { ...state.loginInput, password: action.payload },
+      };
+    case "LOGIN":
+      const result = state.users.find(
+        ({ email, password }) =>
+          email === state.loginInput.email &&
+          (password === state.loginInput.password)
+       
+      );
+      if (result) {
+        return {
           ...state,
-          category: action.payload,
-          filteredProducts:applyFilter({...state,category:action.payload})
-        }
+          isLogin: true,
+          warning: "",
+        };
+      }
+      return {
+        ...state,
+        warning: "invalid user",
+      };
     default:
       return state;
   }

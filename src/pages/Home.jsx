@@ -18,7 +18,6 @@ const Home = () => {
     <>
       <Navbar />
       <main>
-        <section></section>
         <h1>Welcome</h1>
         <img
           src="https://i.postimg.cc/g2j5N7VK/468-2022-07-29-main-banner.jpg"
