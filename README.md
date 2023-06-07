@@ -1,5 +1,24 @@
+## Ecommerce frontend
 
-
+### Top features
+-   Home Page
+-   Product Listing Page
+-   Single Product Page
+-   Filters by
+    -   Price
+    -   Category
+    -   Ratings
+-   Wishlist Management
+-   Cart Management
+-   Search
+-   Loading & Alerts
+-   Authentication
+    -   Sign-up
+    -   Login
+    -   Logout
+-   Address Management
+-   Checkout
+### User stories
 1.  Home Page
 
     a. A landing page with a list of featured categories.
