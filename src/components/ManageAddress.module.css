@@ -1,0 +1,14 @@
+.address-page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.address{
+
+    width: 16rem;
+    min-height: 5rem;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: #CCCCCC;
+}

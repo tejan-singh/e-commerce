@@ -22,7 +22,7 @@ export const AppProvider = ({ children }) => {
     priceDetails: { bill: 0, shipping: 0, amount: 0 },
     orders: [],
     searchQuery: "",
-    isLogin: false,
+    isLogin: true,
     users: [
       {
         id: 1,
@@ -39,7 +39,8 @@ export const AppProvider = ({ children }) => {
       { id: 2, details: "123 xyz road, Jaipur, Rajasthan" },
     ],
     selectedAddress: "",
-    deliveryAddress:""
+    deliveryAddress:"",
+    inputAddress:""
   };
 
   const [appState, dispatch] = useReducer(reducerFun, initialState);

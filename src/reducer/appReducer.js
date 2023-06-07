@@ -317,7 +317,21 @@ export const reducerFun = (state, action) => {
         deliveryAddress: state.selectedAddress,
         selectedAddress: "",
       };
-
+    case 'INPUT_ADDRESS':
+      return {
+        ...state,
+        inputAddress: action.payload
+      }
+      case 'ADD_NEW_ADDRESS':
+          return {
+            ...state,
+            address:[...state.address, {id: new Date().valueOf(), details:state.inputAddress}]
+          }
+      case 'REMOVE_ADDRESS':
+          return {
+            ...state,
+            address: state.address.filter(eachAddress => eachAddress.id !== action.payload)
+          }
     default:
       return state;
   }
