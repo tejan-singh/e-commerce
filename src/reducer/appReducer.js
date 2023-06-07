@@ -325,6 +325,7 @@ export const reducerFun = (state, action) => {
       case 'ADD_NEW_ADDRESS':
           return {
             ...state,
+            inputAddress:"",
             address:[...state.address, {id: new Date().valueOf(), details:state.inputAddress}]
           }
       case 'REMOVE_ADDRESS':

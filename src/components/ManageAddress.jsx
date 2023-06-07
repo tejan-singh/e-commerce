@@ -34,7 +34,7 @@ const ManageAddress = () => {
         </div>
       )}
 
-      {address.length > 1 ? (
+      {address.length > 0 ? (
         <section className={styles["address-page"]}>
           {address.map(({ id, details }) => (
             <article className={styles.address} key={id}>

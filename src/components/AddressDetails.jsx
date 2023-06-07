@@ -37,7 +37,7 @@ const AddressDetails = () => {
           </div>
         ))}
 
-      <Link>
+      <Link to="/profile">
         <button>Manage address</button>
       </Link>
     </>
