@@ -85,8 +85,8 @@ export const reducerFun = (state, action) => {
         category: "",
         rating: "",
         price: 0,
-        isSortHighToLow:false,
-        isSortLowToHigh:false,
+        isSortHighToLow: false,
+        isSortLowToHigh: false,
         filteredProducts: state.allProducts,
       };
     case "WISHLIST":
@@ -317,22 +317,37 @@ export const reducerFun = (state, action) => {
         deliveryAddress: state.selectedAddress,
         selectedAddress: "",
       };
-    case 'INPUT_ADDRESS':
+    case "INPUT_ADDRESS":
       return {
         ...state,
-        inputAddress: action.payload
-      }
-      case 'ADD_NEW_ADDRESS':
-          return {
-            ...state,
-            inputAddress:"",
-            address:[...state.address, {id: new Date().valueOf(), details:state.inputAddress}]
-          }
-      case 'REMOVE_ADDRESS':
-          return {
-            ...state,
-            address: state.address.filter(eachAddress => eachAddress.id !== action.payload)
-          }
+        inputAddress: action.payload,
+      };
+    case "ADD_NEW_ADDRESS":
+      return {
+        ...state,
+        inputAddress: "",
+        address: [
+          ...state.address,
+          { id: new Date().valueOf(), details: state.inputAddress },
+        ],
+      };
+    case "REMOVE_ADDRESS":
+      return {
+        ...state,
+        address: state.address.filter(
+          (eachAddress) => eachAddress.id !== action.payload
+        ),
+      };
+    case "EDIT_ADDRESS":
+      const updatedAddress = state.address.map((eachValue) =>
+        eachValue.id === action.payload.id
+          ? { ...eachValue, details: action.payload.details }
+          : { ...eachValue }
+      );
+      return {
+        ...state,
+        address: updatedAddress,
+      };
     default:
       return state;
   }
