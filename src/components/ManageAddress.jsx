@@ -13,7 +13,7 @@ const ManageAddress = () => {
   const [editedAddress, setEditedAddress] = useState("");
 
   const handleInputChange = (e) => {
-    setEditedAddress(e.target.value);
+    dispatch({ type: "INPUT_ADDRESS", payload: e.target.value });
   };
 
   const handleAddNewAddress = () => {
