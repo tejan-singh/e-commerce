@@ -16,6 +16,10 @@ const ManageAddress = () => {
     dispatch({ type: "INPUT_ADDRESS", payload: e.target.value });
   };
 
+  const handleEditChange = (e) => {
+    setEditedAddress(e.target.value)
+  }
+
   const handleAddNewAddress = () => {
     dispatch({ type: "ADD_NEW_ADDRESS" });
   };
@@ -58,7 +62,7 @@ const ManageAddress = () => {
                   <input
                     type="text"
                     value={editedAddress}
-                    onChange={handleInputChange}
+                    onChange={handleEditChange}
                   />
                   <button onClick={handleSave}>Save</button>
                 </>
